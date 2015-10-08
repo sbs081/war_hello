@@ -2,11 +2,12 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>ki.demo</groupId>
-  <artifactId>demo</artifactId>
+  <artifactId>hellowar</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>demo Maven Webapp</name>
   <url>http://maven.apache.org</url>
+  
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -37,6 +38,6 @@
     </distributionManagement>
 	
   <build>
-    <finalName>demo</finalName>
+    <finalName>Hello_World_War</finalName>
   </build>
 </project>
