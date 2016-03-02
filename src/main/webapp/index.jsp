@@ -1,6 +1,6 @@
 <html>
 <body> 
-<h1>Hello! What do you do</h1>
-<h2>Olunga work aaidu</h2>
+<h1>Hello!</h1>
+<h2>Have a good week</h2>
 </body>
 </html>
