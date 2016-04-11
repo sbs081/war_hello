@@ -38,6 +38,6 @@
     </distributionManagement>
 	
   <build>
-    <finalName>app-test-1.0.0-Release-201604050939.war</finalName>
+    <finalName>app-test-1.0.0-Release-201604050939</finalName>
   </build>
 </project>
