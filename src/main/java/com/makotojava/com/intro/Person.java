@@ -1,4 +1,5 @@
 package com.makotojava.com.intro;
+
 import java.util.logging.Logger;
 
 /**
@@ -10,8 +11,25 @@ public class Person {
 
     private String name;
     private int age;
+    private int height;
+    private int weight;
+    private String eyeColor;
+    private String gender;
+
+    public Person() {
+    }
+
+    public Person(String name, int age, int height, int weight, String eyeColor, String gender) {
+        this.name = name;
+        this.age = age;
+        this.height = height;
+        this.weight = weight;
+        this.eyeColor = eyeColor;
+        this.gender = gender;
+    }
 
     public String getName() {
+
         return name;
     }
 
@@ -56,23 +74,6 @@ public class Person {
     }
 
     public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    private int height;
-    private int weight;
-    private String eyeColor;
-
-    private String gender;
-    public Person() {
-    }
-
-    public Person(String name, int age, int height, int weight, String eyeColor, String gender) {
-        this.name = name;
-        this.age = age;
-        this.height = height;
-        this.weight = weight;
-        this.eyeColor = eyeColor;
         this.gender = gender;
     }
 }
