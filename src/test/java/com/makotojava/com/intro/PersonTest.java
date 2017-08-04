@@ -21,7 +21,7 @@ public class PersonTest {
         l.info("Gender:" + p.getGender());
         Assert.assertEquals("Joe Q Author", p.getFullname());
         Assert.assertEquals(42, p.getAge());
-        Assert.assertEquals(173, p.getHeight());
+        Assert.assertEquals(175, p.getHeight());
         Assert.assertEquals(82, p.getWeight());
         Assert.assertEquals("Brown", p.getEyeColor());
         Assert.assertEquals("MALE", p.getGender());
@@ -34,5 +34,7 @@ public class PersonTest {
         Logger l = Logger.getLogger(PersonTest.class.getName());
 
         l.info("toString(): " + p.toString());
+
+        Assert.assertEquals("Joe Q Author", p.getFullname());
     }
 }
