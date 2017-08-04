@@ -1,5 +1,6 @@
 package com.makotojava.com.intro;
 
+import java.util.Locale;
 import java.util.logging.Logger;
 
 /**
@@ -8,19 +9,20 @@ import java.util.logging.Logger;
 public class Person {
 
     Logger l = Logger.getLogger(Person.class.getName());
-
-    private String name;
+    //    private String name;
+    private String firstName;
+    private String lastName;
     private int age;
     private int height;
     private int weight;
     private String eyeColor;
     private String gender;
-
     public Person() {
     }
-
-    public Person(String name, int age, int height, int weight, String eyeColor, String gender) {
-        this.name = name;
+    public Person(String firstName,String lastName, int age, int height, int weight, String eyeColor, String gender) {
+//        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.age = age;
         this.height = height;
         this.weight = weight;
@@ -28,14 +30,47 @@ public class Person {
         this.gender = gender;
     }
 
-    public String getName() {
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFullname() {
+        return getFirstName().concat(" ").concat(getLastName());
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+//             "name='" + name + '\'' +
+                getFullname() +
+                ", age=" + age +
+                ", height=" + height +
+                ", weight=" + weight +
+                ", eyeColor='" + eyeColor + '\'' +
+                ", gender='" + gender + '\'' +
+                '}';
+    }
+
+/*    public String getName() {
 
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
+    }*/
 
     public int getAge() {
         return age;
@@ -46,7 +81,20 @@ public class Person {
     }
 
     public int getHeight() {
-        return height;
+        int ret;
+        if (gender.equals("MALE"))
+            ret = height + 2;
+        else {
+            ret = height;
+            Logger.getLogger("Person").info("Being honest about height...");
+        }
+        return ret;
+
+/*        int ret = height;
+        if (Locale.getDefault().equals(Locale.US))
+            ret /= 2.54;
+        return ret;*/
+//        return height;
     }
 
     public void setHeight(int height) {
@@ -76,4 +124,5 @@ public class Person {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
 }
