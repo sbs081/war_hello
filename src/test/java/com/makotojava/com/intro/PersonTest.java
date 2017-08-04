@@ -1,14 +1,19 @@
 package com.makotojava.com.intro;
 
 
+import com.makotojava.com.intro.mapper.PersonMapper;
 import org.junit.Assert;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Logger;
 
 /**
  * Created by aronwong on 8/3/17.
  */
-public class PersonTest {
+public class PersonTest extends PersistenceUnitTestConfig{
     @Test
     public void testPerson() {
         Person p = new Person("Joe Q", "Author", 42, 173, 82, "Brown", "MALE"); //使用参数的方法调用
@@ -37,4 +42,21 @@ public class PersonTest {
 
         Assert.assertEquals("Joe Q Author", p.getFullname());
     }
+
+    @Autowired
+    private PersonMapper personMapper;
+    @Test
+    public void testInsertPerson() {
+        Person p = new Person("Joe Q", "Author", 42, 173, 82, "Brown", "MALE"); //使用参数的方法调用
+        personMapper.insertPerson(p);
+    }
+
+    @Test
+    public void deletePerson() {
+        Map p = new HashMap();
+        p.put("age",42);
+        personMapper.deletePerson(p);
+    }
+
+
 }
