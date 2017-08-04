@@ -1,6 +1,8 @@
 package com.makotojava.com.intro;
 
 import java.util.logging.Logger;
+
+import org.junit.Assert;
 import org.junit.Test;
 /**
  * Created by aronwong on 8/4/17.
@@ -21,6 +23,8 @@ public class EmployeeTest {
         l.info("Q: Integer1 == Integer2?   A: " + (integer1 == integer2));
         Employee employee1 = new Employee("Joe Q", "Author", 42, 173, 82, "Brown", "MALE");
         Employee employee2 = new Employee("Joe Q", "Author", 42, 173, 82, "Brown", "MALE");
+//        employee1.equals(employee2);
+        Assert.assertEquals(employee1,employee2);
         l.info("Q: Employee1 == Employee2? A: " + (employee1 == employee2));
     }
 }

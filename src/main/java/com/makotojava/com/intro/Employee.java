@@ -15,6 +15,26 @@ public class Employee extends Person {
         super(firstName, lastName, age, height, weight, eyeColor, gender);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Employee employee = (Employee) o;
+
+        //if (!taxpayerIdentificationNumber.equals(employee.taxpayerIdentificationNumber)) return false;
+        //if (!employeeNumber.equals(employee.employeeNumber)) return false;
+        return this.getFullname().equals(employee.getFullname());
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = taxpayerIdentificationNumber.hashCode();
+        result = 31 * result + employeeNumber.hashCode();
+        result = 31 * result + salary.hashCode();
+        return result;
+    }
 
     @Override
     public void printAudit(StringBuilder buffer) {
