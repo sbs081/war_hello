@@ -1,4 +1,4 @@
-package com.demo;
+package com.makotojava.com.intro;
  
 import java.io.*;
 import javax.servlet.*;

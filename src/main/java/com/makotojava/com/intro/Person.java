@@ -17,7 +17,7 @@ public class Person {
     private int weight;
     private String eyeColor;
     private String gender;
-    public Person() {
+    public Person(String name, int age, int height, int weight, String eyeColor, String gender) {
     }
     public Person(String firstName,String lastName, int age, int height, int weight, String eyeColor, String gender) {
 //        this.name = name;
@@ -28,6 +28,32 @@ public class Person {
         this.weight = weight;
         this.eyeColor = eyeColor;
         this.gender = gender;
+    }
+
+    public void printAudit(StringBuilder buffer) {
+        buffer.append("Name=");
+        buffer.append(getFullname());
+        buffer.append(",");
+        buffer.append("Age=");
+        buffer.append(getAge());
+        buffer.append(",");
+        buffer.append("Height=");
+        buffer.append(getHeight());
+        buffer.append(",");
+        buffer.append("Weight=");
+        buffer.append(getWeight());
+        buffer.append(",");
+        buffer.append("EyeColor=");
+        buffer.append(getEyeColor());
+        buffer.append(",");
+        buffer.append("Gender=");
+        buffer.append(getGender());
+    }
+
+    public void printAudit(Logger l) {
+        StringBuilder sb = new StringBuilder();
+        printAudit(sb);
+        l.info(sb.toString());
     }
 
     public String getFirstName() {
