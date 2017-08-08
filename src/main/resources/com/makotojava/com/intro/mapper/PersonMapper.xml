@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.makotojava.com.intro.mapper.PersonMapper">
+
+    <insert id="insertPerson" parameterType="com.makotojava.com.intro.Person">
+        INSERT INTO person(
+            firstname,
+            lastname,
+            age,
+            height,
+            weight,
+            eyecolor,
+            gender
+        )values(
+        #{data.firstName},
+        #{data.lastName},
+        #{data.age},
+        #{data.height},
+        #{data.weight},
+        #{data.eyeColor},
+        #{data.gender}
+        )
+    </insert>
+
+
+    <insert id="batchInsertPerson" parameterType="java.util.List">
+        INSERT INTO person(
+        firstname,
+        lastname,
+        age,
+        height,
+        weight,
+        eyecolor,
+        gender
+        )
+        values
+        <foreach collection="list" item="item" separator=",">
+            (        #{item.firstname},
+            #{item.lastname},
+            #{item.age},
+            #{item.method},
+            #{item.height},
+            #{item.weight},
+            #{item.eyecolor},
+            #{item.gender},)
+        </foreach>
+    </insert>
+
+    <delete id="deletePerson" parameterType="map">
+        DELETE FROM  person WHERE age = #{age};
+    </delete>
+
+<!--    <sql id="whereConditon">
+        <where>
+            info.id=stat.serviceid
+            <if test="domain != null  and domain != '' ">AND info.domain=#{domain}</if>
+            <if test="type != null  and type != '' ">AND info.type=#{type}</if>
+            <if test="service != null  and service != '' ">AND info.service=#{service}</if>
+            <if test="method != null  and method != '' ">AND info.method=#{method}</if>
+            <if test="begin != null">AND stat.invokeTime &gt;= #{begin}</if>
+            <if test="end != null">AND stat.invokeTime &lt; #{end}</if>
+        </where>
+    </sql>
+
+    <select id="queryReport" parameterType="map" resultType="com.meitun.galileo.common.domain.Statistics">
+        SELECT info.endpoint AS `serviceInfo.endpoint`,
+        MAX(stat.invokeTime) invokeTime,
+        SUM(stat.count) count,
+        SUM(stat.success) success,
+        SUM(stat.failure) failure,
+        MAX(stat.max) max,
+        MIN(stat.min) min,
+        MAX(stat.mean) mean,
+        MAX(stat.stddev) stddev,
+        MAX(stat.median) median,
+        MAX(stat.pct75) pct75,
+        MAX(stat.pct95) pct95,
+        MAX(stat.pct98) pct98,
+        MAX(stat.pct99) pct99
+        FROM galileo_service_info info, galileo_minute_statistics stat
+        <include refid="whereConditon"/>
+        group by info.endpoint
+        order by invokeTime DESC
+        limit 100;
+    </select>-->
+
+</mapper>
