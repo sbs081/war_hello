@@ -7,7 +7,8 @@ import java.util.logging.Logger;
  * Created by aronwong on 8/3/17.
  */
 public class Person {
-
+    public static final String GENDER_MALE = "MALE";
+    public static final String GENDER_FEMALE = "FEMALE";
     Logger l = Logger.getLogger(Person.class.getName());
     //    private String name;
     private String firstName;
@@ -28,6 +29,12 @@ public class Person {
         this.weight = weight;
         this.eyeColor = eyeColor;
         this.gender = gender;
+    }
+
+    public static void main(String[] args) {
+        Person p = new Person("Joe Q Author", 42, 173, 82, "Brown", GENDER_MALE);
+        Person q = new Person("Elsa Q", 42, 173, 82, "Marry", GENDER_FEMALE);
+        // . . .
     }
 
     public void printAudit(StringBuilder buffer) {
@@ -151,4 +158,32 @@ public class Person {
         this.gender = gender;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Person person = (Person) o;
+
+        if (age != person.age) return false;
+        if (height != person.height) return false;
+        if (weight != person.weight) return false;
+        if (!firstName.equals(person.firstName)) return false;
+        if (!lastName.equals(person.lastName)) return false;
+        if (!eyeColor.equals(person.eyeColor)) return false;
+        return gender.equals(person.gender);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = firstName.hashCode();
+        result = 31 * result + lastName.hashCode();
+        result = 31 * result + age;
+        result = 31 * result + height;
+        result = 31 * result + weight;
+        result = 31 * result + eyeColor.hashCode();
+        result = 31 * result + gender.hashCode();
+        return result;
+    }
 }

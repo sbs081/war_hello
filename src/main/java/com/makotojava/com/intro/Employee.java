@@ -1,18 +1,24 @@
 package com.makotojava.com.intro;
 
 import java.math.BigDecimal;
+import java.util.logging.Logger;
 
 /**
  * Created by aronwong on 8/4/17.
  */
 public class Employee extends Person {
 
+    private static final Logger logger = Logger.getLogger(Employee.class.getName());
     private String taxpayerIdentificationNumber;
     private String employeeNumber;
     private BigDecimal salary;
-
     public Employee(String firstName, String lastName, int age, int height, int weight, String eyeColor, String gender) {
         super(firstName, lastName, age, height, weight, eyeColor, gender);
+    }
+
+    //. . .
+    public static Logger getLogger() {
+        return logger;
     }
 
     @Override
@@ -41,9 +47,11 @@ public class Employee extends Person {
         super.printAudit(buffer);
         buffer.append("TaxpayerIdentificationNumber=");
         buffer.append(getTaxpayerIdentificationNumber());
-        buffer.append(","); buffer.append("EmployeeNumber=");
+        buffer.append(",");
+        buffer.append("EmployeeNumber=");
         buffer.append(getEmployeeNumber());
-        buffer.append(","); buffer.append("Salary=");
+        buffer.append(",");
+        buffer.append("Salary=");
         buffer.append(getSalary().setScale(2).toPlainString());
     }
 
@@ -71,4 +79,12 @@ public class Employee extends Person {
         this.salary = salary;
     }
 
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "taxpayerIdentificationNumber='" + taxpayerIdentificationNumber + '\'' +
+                ", employeeNumber='" + employeeNumber + '\'' +
+                ", salary=" + salary +
+                '}';
+    }
 }
