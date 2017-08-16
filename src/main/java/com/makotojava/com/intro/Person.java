@@ -7,6 +7,7 @@ import java.util.logging.Logger;
  * Created by aronwong on 8/3/17.
  */
 public class Person {
+    public static final String STATE_DELIMITER = "~";
     public static final String GENDER_MALE = "MALE";
     public static final String GENDER_FEMALE = "FEMALE";
     Logger l = Logger.getLogger(Person.class.getName());
@@ -18,9 +19,11 @@ public class Person {
     private int weight;
     private String eyeColor;
     private String gender;
+
     public Person(String name, int age, int height, int weight, String eyeColor, String gender) {
     }
-    public Person(String firstName,String lastName, int age, int height, int weight, String eyeColor, String gender) {
+
+    public Person(String firstName, String lastName, int age, int height, int weight, String eyeColor, String gender) {
 //        this.name = name;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -96,6 +99,10 @@ public class Person {
                 '}';
     }
 
+    public int getAge() {
+        return age;
+    }
+
 /*    public String getName() {
 
         return name;
@@ -104,10 +111,6 @@ public class Person {
     public void setName(String name) {
         this.name = name;
     }*/
-
-    public int getAge() {
-        return age;
-    }
 
     public void setAge(int age) {
         this.age = age;
@@ -185,5 +188,11 @@ public class Person {
         result = 31 * result + eyeColor.hashCode();
         result = 31 * result + gender.hashCode();
         return result;
+    }
+
+    public enum Gender {
+        MALE,
+        FEMALE,
+        UNKNOWN
     }
 }
