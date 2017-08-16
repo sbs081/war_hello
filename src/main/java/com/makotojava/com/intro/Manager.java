@@ -15,6 +15,7 @@ public class Manager extends Employee {
                 price.toPlainString() + "!");
     }
 
+
     @Override
     public float getManagerPrice() {
         return this.getPrice() + 300;
