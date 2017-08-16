@@ -8,7 +8,7 @@ import java.util.logging.Logger;
  */
 public class Employee extends Person {
 
-    private static final Logger logger = Logger.getLogger(Employee.class.getName());
+    public static final Logger logger = Logger.getLogger(Employee.class.getName());
     private String taxpayerIdentificationNumber;
     private String employeeNumber;
     private BigDecimal salary;

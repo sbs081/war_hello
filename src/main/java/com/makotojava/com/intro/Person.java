@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 /**
  * Created by aronwong on 8/3/17.
  */
-public class Person {
+public class Person implements StockOptionRecipient {
     public static final String STATE_DELIMITER = "~";
     public static final String GENDER_MALE = "MALE";
     public static final String GENDER_FEMALE = "FEMALE";
@@ -19,6 +19,7 @@ public class Person {
     private int weight;
     private String eyeColor;
     private String gender;
+    private float price;
 
     public Person(String name, int age, int height, int weight, String eyeColor, String gender) {
     }
@@ -38,6 +39,14 @@ public class Person {
         Person p = new Person("Joe Q Author", 42, 173, 82, "Brown", GENDER_MALE);
         Person q = new Person("Elsa Q", 42, 173, 82, "Marry", GENDER_FEMALE);
         // . . .
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
     }
 
     public void printAudit(StringBuilder buffer) {
@@ -188,6 +197,11 @@ public class Person {
         result = 31 * result + eyeColor.hashCode();
         result = 31 * result + gender.hashCode();
         return result;
+    }
+
+    @Override
+    public float getManagerPrice() {
+        return 0;
     }
 
     public enum Gender {
